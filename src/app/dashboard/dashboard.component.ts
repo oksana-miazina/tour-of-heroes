@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
@@ -7,7 +8,7 @@ import { Hero } from '../hero';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
