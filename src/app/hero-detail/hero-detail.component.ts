@@ -12,7 +12,7 @@ import { Hero } from '../hero';
   standalone: true,
   imports: [CommonModule, FormsModule, NgIf],
   templateUrl: './hero-detail.component.html',
-  styleUrl: './hero-detail.component.css'
+  styleUrl: './hero-detail.component.css',
 })
 export class HeroDetailComponent {
   @Input() hero?: Hero;
@@ -21,7 +21,7 @@ export class HeroDetailComponent {
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getHero();
@@ -29,11 +29,16 @@ export class HeroDetailComponent {
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+    }
   }
 }

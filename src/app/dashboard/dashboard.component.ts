@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
+import { HeroSearchComponent } from '../hero-search/hero-search.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterModule],
+  imports: [NgFor, RouterModule, HeroSearchComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
